@@ -91,6 +91,16 @@ QString dateTimeStr(qint64 nTime)
     return dateTimeStr(QDateTime::fromTime_t((qint32)nTime));
 }
 
+QString dateTimeLongStr(const QDateTime& date)
+{
+    return date.toString("dd/MM/yyyy hh:mmAP");
+}
+
+QString dateTimeLongStr(qint64 nTime)
+{
+    return dateTimeLongStr(QDateTime::fromTime_t((qint32)nTime));
+}
+
 QFont bitcoinAddressFont()
 {
     QFont font("Monospace");
@@ -110,7 +120,8 @@ void setupAddressWidget(QValidatedLineEdit* widget, QWidget* parent)
 #if QT_VERSION >= 0x040700
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
-    widget->setPlaceholderText(QObject::tr("Enter a OneWorld address (e.g. %1)").arg("CV7AeX9sYDiL2GSX9PhQzKFTgzmPUQnxX3"));
+//    widget->setPlaceholderText(QObject::tr("Enter A OneWorld address (e.g. %1)").arg("TTh3VPSJA1zsit4sHqVVn92ARKDuM3xjTC"));
+    widget->setPlaceholderText(QObject::tr("Enter a OneWorld change address"));
 #endif
     widget->setValidator(new BitcoinAddressEntryValidator(parent));
     widget->setCheckValidator(new BitcoinAddressCheckValidator(parent));
@@ -161,7 +172,7 @@ bool parseBitcoinURI(const QUrl& uri, SendCoinsRecipient* out)
             fShouldReturnFalse = false;
         } else if (i->first == "amount") {
             if (!i->second.isEmpty()) {
-                if (!BitcoinUnits::parse(BitcoinUnits::ONEWORLD, i->second, &rv.amount)) {
+                if (!BitcoinUnits::parse(BitcoinUnits::OWO, i->second, &rv.amount)) {
                     return false;
                 }
             }
@@ -196,7 +207,7 @@ QString formatBitcoinURI(const SendCoinsRecipient& info)
     int paramCount = 0;
 
     if (info.amount) {
-        ret += QString("?amount=%1").arg(BitcoinUnits::format(BitcoinUnits::ONEWORLD, info.amount, false, BitcoinUnits::separatorNever));
+        ret += QString("?amount=%1").arg(BitcoinUnits::format(BitcoinUnits::OWO, info.amount, false, BitcoinUnits::separatorNever));
         paramCount++;
     }
 
@@ -797,14 +808,17 @@ void restoreWindowGeometry(const QString& strSetting, const QSize& defaultSize, 
     QPoint pos = settings.value(strSetting + "Pos").toPoint();
     QSize size = settings.value(strSetting + "Size", defaultSize).toSize();
 
-    if (!pos.x() && !pos.y()) {
-        QRect screen = QApplication::desktop()->screenGeometry();
-        pos.setX((screen.width() - size.width()) / 2);
-        pos.setY((screen.height() - size.height()) / 2);
-    }
-
     parent->resize(size);
     parent->move(pos);
+    
+    if ((!pos.x() && !pos.y()) || (QApplication::desktop()->screenNumber(parent) == -1))
+    {
+        QRect screen = QApplication::desktop()->screenGeometry();
+        QPoint defaultPos = screen.center() -
+        QPoint(defaultSize.width() / 2, defaultSize.height() / 2);
+        parent->resize(defaultSize);
+        parent->move(defaultPos);
+    }
 }
 
 // Check whether a theme is not build-in

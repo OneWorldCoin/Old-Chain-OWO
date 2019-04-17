@@ -283,14 +283,14 @@ void PrivacyDialog::on_pushButtonSpendzOWO_clicked()
 
 void PrivacyDialog::on_pushButtonZOneWorldControl_clicked()
 {
-    ZOneWorldControlDialog* zOWOControl = new ZOneWorldControlDialog(this);
-    zOWOControl->setModel(walletModel);
-    zOWOControl->exec();
+    ZOneWorldControlDialog* zOneWorldControl = new ZOneWorldControlDialog(this);
+    zOneWorldControl->setModel(walletModel);
+    zOneWorldControl->exec();
 }
 
 void PrivacyDialog::setZOneWorldControlLabels(int64_t nAmount, int nQuantity)
 {
-    ui->labelzOWOSelected_int->setText(QString::number(nAmount));
+    ui->labelzOneWorldSelected_int->setText(QString::number(nAmount));
     ui->labelQuantitySelected_int->setText(QString::number(nQuantity));
 }
 
@@ -343,7 +343,7 @@ void PrivacyDialog::sendzOWO()
 
     if(!fWholeNumber && fMintChange){
         QString strFeeWarning = "You've entered an amount with fractional digits and want the change to be converted to Zerocoin.<br /><br /><b>";
-        strFeeWarning += QString::number(dzFee, 'f', 8) + " ONEWORLD </b>will be added to the standard transaction fees!<br />";
+        strFeeWarning += QString::number(dzFee, 'f', 8) + " OWO </b>will be added to the standard transaction fees!<br />";
         QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm additional Fees"),
             strFeeWarning,
             QMessageBox::Yes | QMessageBox::Cancel,
@@ -396,7 +396,7 @@ void PrivacyDialog::sendzOWO()
     ui->TEMintStatus->setPlainText(tr("Spending Zerocoin.\nComputationally expensive, might need several minutes depending on the selected Security Level and your hardware. \nPlease be patient..."));
     ui->TEMintStatus->repaint();
 
-    // use mints from zOWO selector if applicable
+    // use mints from zOneWorld selector if applicable
     vector<CZerocoinMint> vMintsSelected;
     if (!ZOneWorldControlDialog::listSelectedMints.empty()) {
         vMintsSelected = ZOneWorldControlDialog::GetSelectedMints();
@@ -442,7 +442,7 @@ void PrivacyDialog::sendzOWO()
     CAmount nValueIn = 0;
     int nCount = 0;
     for (CZerocoinSpend spend : receipt.GetSpends()) {
-        strStats += tr("zOWO Spend #: ") + QString::number(nCount) + ", ";
+        strStats += tr("zOneWorld Spend #: ") + QString::number(nCount) + ", ";
         strStats += tr("denomination: ") + QString::number(spend.GetDenomination()) + ", ";
         strStats += tr("serial: ") + spend.GetSerial().ToString().c_str() + "\n";
         strStats += tr("Spend is 1 of : ") + QString::number(spend.GetMintCount()) + " mints in the accumulator\n";
@@ -457,7 +457,7 @@ void PrivacyDialog::sendzOWO()
         strStats += tr("address: ");
         CTxDestination dest;
         if(txout.scriptPubKey.IsZerocoinMint())
-            strStats += tr("zOWO Mint");
+            strStats += tr("zOneWorld Mint");
         else if(ExtractDestination(txout.scriptPubKey, dest))
             strStats += tr(CBitcoinAddress(dest).ToString().c_str());
         strStats += "\n";

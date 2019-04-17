@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ZONEWORLDCONTROLDIALOG_H
-#define ZONEWORLDCONTROLDIALOG_H
+#ifndef ZOWOCONTROLDIALOG_H
+#define ZOWOCONTROLDIALOG_H
 
 #include <QDialog>
 #include <QTreeWidgetItem>
@@ -53,4 +53,4 @@ private slots:
     void ButtonAllClicked();
 };
 
-#endif // ZONEWORLDCONTROLDIALOG_H
+#endif // ZOWOCONTROLDIALOG_H

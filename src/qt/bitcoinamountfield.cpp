@@ -23,12 +23,13 @@ class AmountSpinBox : public QAbstractSpinBox
 
 public:
     explicit AmountSpinBox(QWidget* parent) : QAbstractSpinBox(parent),
-                                              currentUnit(BitcoinUnits::ONEWORLD),
+                                              currentUnit(BitcoinUnits::OWO),
                                               singleStep(100000) // satoshis
     {
-        setAlignment(Qt::AlignRight);
+//        setAlignment(Qt::AlignRight);
 
         connect(lineEdit(), SIGNAL(textEdited(QString)), this, SIGNAL(valueChanged()));
+        setButtonSymbols(QAbstractSpinBox::NoButtons);
     }
 
     QValidator::State validate(QString& text, int& pos) const
@@ -96,7 +97,7 @@ public:
 
             const QFontMetrics fm(fontMetrics());
             int h = lineEdit()->minimumSizeHint().height();
-            int w = fm.width(BitcoinUnits::format(BitcoinUnits::ONEWORLD, BitcoinUnits::maxMoney(), false, BitcoinUnits::separatorAlways));
+            int w = fm.width(BitcoinUnits::format(BitcoinUnits::OWO, BitcoinUnits::maxMoney(), false, BitcoinUnits::separatorAlways));
             w += 2; // cursor blinking space
 
             QStyleOptionSpinBox opt;
@@ -185,15 +186,15 @@ BitcoinAmountField::BitcoinAmountField(QWidget* parent) : QWidget(parent),
     amount = new AmountSpinBox(this);
     amount->setLocale(QLocale::c());
     amount->installEventFilter(this);
-    amount->setMaximumWidth(170);
-
     QHBoxLayout* layout = new QHBoxLayout(this);
     layout->addWidget(amount);
-    unit = new QValueComboBox(this);
-    unit->setModel(new BitcoinUnits(this));
-    layout->addWidget(unit);
-    layout->addStretch(1);
+//    unit = new QValueComboBox(this);
+//    unit->setMaximumSize(0, 0);
+//    unit->setModel(new BitcoinUnits(this));
+//    layout->addWidget(unit);
+//    layout->addStretch(1);
     layout->setContentsMargins(0, 0, 0, 0);
+    layout->setSpacing(0);
 
     setLayout(layout);
 
@@ -202,22 +203,22 @@ BitcoinAmountField::BitcoinAmountField(QWidget* parent) : QWidget(parent),
 
     // If one if the widgets changes, the combined content changes as well
     connect(amount, SIGNAL(valueChanged()), this, SIGNAL(valueChanged()));
-    connect(unit, SIGNAL(currentIndexChanged(int)), this, SLOT(unitChanged(int)));
+//    connect(unit, SIGNAL(currentIndexChanged(int)), this, SLOT(unitChanged(int)));
 
     // Set default based on configuration
-    unitChanged(unit->currentIndex());
+//    unitChanged(unit->currentIndex());
 }
 
 void BitcoinAmountField::clear()
 {
     amount->clear();
-    unit->setCurrentIndex(0);
+//    unit->setCurrentIndex(0);
 }
 
 void BitcoinAmountField::setEnabled(bool fEnabled)
 {
     amount->setEnabled(fEnabled);
-    unit->setEnabled(fEnabled);
+//    unit->setEnabled(fEnabled);
 }
 
 bool BitcoinAmountField::validate()
@@ -245,12 +246,12 @@ bool BitcoinAmountField::eventFilter(QObject* object, QEvent* event)
     return QWidget::eventFilter(object, event);
 }
 
-QWidget* BitcoinAmountField::setupTabChain(QWidget* prev)
-{
-    QWidget::setTabOrder(prev, amount);
-    QWidget::setTabOrder(amount, unit);
-    return unit;
-}
+//QWidget* BitcoinAmountField::setupTabChain(QWidget* prev)
+//{
+//    QWidget::setTabOrder(prev, amount);
+//    QWidget::setTabOrder(amount, unit);
+//    return unit;
+//}
 
 CAmount BitcoinAmountField::value(bool* valid_out) const
 {
@@ -265,23 +266,24 @@ void BitcoinAmountField::setValue(const CAmount& value)
 void BitcoinAmountField::setReadOnly(bool fReadOnly)
 {
     amount->setReadOnly(fReadOnly);
-    unit->setEnabled(!fReadOnly);
+//    unit->setEnabled(!fReadOnly);
 }
 
 void BitcoinAmountField::unitChanged(int idx)
 {
     // Use description tooltip for current unit for the combobox
-    unit->setToolTip(unit->itemData(idx, Qt::ToolTipRole).toString());
+//    unit->setToolTip(unit->itemData(idx, Qt::ToolTipRole).toString());
 
     // Determine new unit ID
-    int newUnit = unit->itemData(idx, BitcoinUnits::UnitRole).toInt();
+//    int newUnit = unit->itemData(idx, BitcoinUnits::UnitRole).toInt();
 
-    amount->setDisplayUnit(newUnit);
+//    amount->setDisplayUnit(newUnit);
+    amount->setDisplayUnit(0);
 }
 
 void BitcoinAmountField::setDisplayUnit(int newUnit)
 {
-    unit->setValue(newUnit);
+//    unit->setValue(newUnit);
 }
 
 void BitcoinAmountField::setSingleStep(const CAmount& step)

@@ -1,0 +1,1 @@
+qt/libbitcoinqt_a-qrc_oneworld_locale.o: qt/qrc_oneworld_locale.cpp

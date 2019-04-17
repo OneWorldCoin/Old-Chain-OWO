@@ -61,7 +61,7 @@ void OptionsModel::Init()
 
     // Display
     if (!settings.contains("nDisplayUnit"))
-        settings.setValue("nDisplayUnit", BitcoinUnits::ONEWORLD);
+        settings.setValue("nDisplayUnit", BitcoinUnits::OWO);
     nDisplayUnit = settings.value("nDisplayUnit").toInt();
 
     if (!settings.contains("strThirdPartyTxUrls"))
@@ -421,7 +421,11 @@ void OptionsModel::setRestartRequired(bool fRequired)
     QSettings settings;
     return settings.setValue("fRestartRequired", fRequired);
 }
-
+// void OverviewPage::hideOrphans(bool fHide)
+// {	
+// if(filter)
+//         filter->setHideOrphans(fHide);
+// }	
 bool OptionsModel::isRestartRequired()
 {
     QSettings settings;

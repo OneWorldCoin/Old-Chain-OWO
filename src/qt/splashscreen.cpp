@@ -25,8 +25,8 @@
 SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle* networkStyle) : QWidget(0, f), curAlignment(0)
 {
     // set reference point, paddings
-    int paddingLeft = 14;
-    int paddingTop = 430;
+    int paddingLeft = 21;
+    int paddingTop = 570;
     int titleVersionVSpace = 17;
     int titleCopyrightVSpace = 32;
 
@@ -38,14 +38,14 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle* networkStyle) 
     QString copyrightTextBtc = QChar(0xA9) + QString(" 2009-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Bitcoin Core developers"));
     QString copyrightTextDash = QChar(0xA9) + QString(" 2014-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Dash Core developers"));
     QString copyrightTextPIVX = QChar(0xA9) + QString(" 2015-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The PIVX Core developers"));
-    QString copyrightTextOneWorld = QChar(0xA9) + QString(" 2017-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The OneWorld Core developers"));
+    QString copyrightTextDOGEC = QChar(0xA9) + QString(" 2018-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The DOGEC Core developers"));
+    QString copyrightTextOneWorld = QChar(0xA9) + QString(" -%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The OneWorld Core developers"));
     QString titleAddText = networkStyle->getTitleAddText();
 
     QString font = QApplication::font().toString();
 
     // load the bitmap for writing some text over it
     pixmap = networkStyle->getSplashImage();
-
     QPainter pixPaint(&pixmap);
     pixPaint.setPen(QColor(0, 0, 0));
 
@@ -114,7 +114,7 @@ static void InitMessage(SplashScreen* splash, const std::string& message)
         Qt::QueuedConnection,
         Q_ARG(QString, QString::fromStdString(message)),
         Q_ARG(int, Qt::AlignBottom | Qt::AlignHCenter),
-        Q_ARG(QColor, QColor(0, 0, 0)));
+        Q_ARG(QColor, QColor(1, 0, 0)));
 }
 
 static void ShowProgress(SplashScreen* splash, const std::string& title, int nProgress)

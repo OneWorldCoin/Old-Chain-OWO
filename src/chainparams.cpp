@@ -138,13 +138,28 @@ public:
         genesis.nBits = 0x1e0ffff0;
         genesis.nNonce = 791096;
 
+//Adding New Spork
+        nEnforceNewSporkKey = 1555420769; //!> Sporks signed after (GMT):  April 16, 2019 12:00:00 AM GMT must use the new spork key
+		    nRejectOldSporkKey = 1555734930; //!> Fully reject old spork key after (GMT) April 20, 2019 12:00:00 AM
+
         hashGenesisBlock = genesis.GetHash();
         assert(hashGenesisBlock == uint256("0x0000011d6a9bf55c1408a238c1162f567551b9578ae29f84a53b88da37e71fda"));
         assert(genesis.hashMerkleRoot == uint256("0xf87b41c89d7b4131f49862e037e7b3962d582cfc773a2ba3cb6e61548dca5809"));
 
-	vSeeds.push_back(CDNSSeedData("95.179.158.50", "95.179.158.50"));
+        vSeeds.push_back(CDNSSeedData("144.202.122.121", "144.202.122.121"));
+        vSeeds.push_back(CDNSSeedData("108.61.214.230", "108.61.214.230"));
+        vSeeds.push_back(CDNSSeedData("45.63.49.24", "45.63.49.24"));
+        vSeeds.push_back(CDNSSeedData("95.179.158.50", "95.179.158.50"));
         vSeeds.push_back(CDNSSeedData("95.179.139.159", "95.179.139.159"));
         vSeeds.push_back(CDNSSeedData("95.179.159.177", "95.179.159.177"));
+        vSeeds.push_back(CDNSSeedData("seed1.oneworldcoin.io", "seed1.oneworldcoin.io"));
+        vSeeds.push_back(CDNSSeedData("seed2.oneworldcoin.io", "seed2.oneworldcoin.io"));
+        vSeeds.push_back(CDNSSeedData("seed3.oneworldcoin.io", "seed3.oneworldcoin.io"));
+        vSeeds.push_back(CDNSSeedData("seed4.oneworldcoin.io", "seed4.oneworldcoin.io"));
+        vSeeds.push_back(CDNSSeedData("seed5.oneworldcoin.io", "seed5.oneworldcoin.io"));
+        vSeeds.push_back(CDNSSeedData("seed6.oneworldcoin.io", "seed6.oneworldcoin.io"));
+
+
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 115); // o
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 112); // n
@@ -166,7 +181,8 @@ public:
         fHeadersFirstSyncingActive = false;
 
         nPoolMaxTransactions = 3;
-	strSporkKey = "04ED5F83E31A88AF32E24AFB9F045BDC8198A2728283A9D016EB4AC5C7ECAA2CA061D2D265D82B6626C51D263A35DEC4E45D7181BDEBAF846BDF05018F93D74D8B";
+        strSporkKey="046DDBE578C1DFDFEE9EBC4C89F2709B92D1D5DD0E0D99D87B84AF8E8DEB3AF370DF7EC30569FB1FD72624B4F3EDC5409EEC0D0A1F7D5B845304FCDCA9FCE157C4";
+	      strSporkKeyOld = "04ED5F83E31A88AF32E24AFB9F045BDC8198A2728283A9D016EB4AC5C7ECAA2CA061D2D265D82B6626C51D263A35DEC4E45D7181BDEBAF846BDF05018F93D74D8B";
         strObfuscationPoolDummyAddress = "oPMer8WeMn7WxrdsW6qvyivGub7SKNfYsY";
         nStartMasternodePayments = 1547645474;
 

@@ -52,13 +52,13 @@
           </font>
          </property>
          <property name="toolTip">
-          <string>ONEWORLD which were anonymized via Zerocin Protocol</string>
+          <string>OWO which were anonymized via Zerocin Protocol</string>
          </property>
          <property name="autoFillBackground">
           <bool>true</bool>
          </property>
          <property name="text">
-          <string>Zerocoin ONEWORLD (zOWO)</string>
+          <string>Zerocoin OWO (zOWO)</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -145,10 +145,10 @@
                   </size>
                  </property>
                  <property name="toolTip">
-                  <string>Enter an amount of OneWorld to convert (mint) to zOWO</string>
+                  <string>Enter an amount of OneWorld to convert (mint) to zOneWorld</string>
                  </property>
                  <property name="text">
-                  <string>Mint OWO to zOWO</string>
+                  <string>Convert OWO to zOWO</string>
                  </property>
                 </widget>
                </item>
@@ -191,10 +191,10 @@
                <item>
                 <widget class="QLabel" name="labelzOWOAmountValue">
                  <property name="toolTip">
-                  <string>Enter an amount of OneWorld to convert to zOWO</string>
+                  <string>Enter an amount of OneWorld to convert to zOneWorld</string>
                  </property>
                  <property name="text">
-                  <string>0.000 000 00 ONEWORLD</string>
+                  <string>0.000 000 00 OWO</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -223,7 +223,7 @@
                   </size>
                  </property>
                  <property name="toolTip">
-                  <string>Reset Zerocoin (zOWO) Wallet DB. Deletes transactions that did not make it into the blockchain.</string>
+                  <string>Reset Zerocoin (zOneWorld) Wallet DB. Deletes transactions that did not make it into the blockchain.</string>
                  </property>
                  <property name="text">
                   <string>Reset</string>
@@ -370,7 +370,7 @@
                     <enum>Qt::ActionsContextMenu</enum>
                    </property>
                    <property name="text">
-                    <string notr="true">0.00 ONEWORLD</string>
+                    <string notr="true">0.00 OWO</string>
                    </property>
                    <property name="textInteractionFlags">
                     <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -476,19 +476,19 @@
                <item>
                 <widget class="QPushButton" name="pushButtonZOneWorldControl">
                  <property name="text">
-                  <string>zOWO Control</string>
+                  <string>zOneWorld Control</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzOWOSelected">
+                <widget class="QLabel" name="labelzOneWorldSelected">
                  <property name="text">
-                  <string>zOWO Selected:</string>
+                  <string>zOneWorld Selected:</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="labelzOWOSelected_int">
+                <widget class="QLabel" name="labelzOneWorldSelected_int">
                  <property name="text">
                   <string>0</string>
                  </property>
@@ -607,7 +607,7 @@ zOWO are mature when they have more than 20 confirmations AND more than 1 mints 
                <item>
                 <widget class="QLabel" name="labelSecurityLevel">
                  <property name="toolTip">
-                  <string>Security Level for Zerocoin (zOWO) Transactions. More is better, but needs more time and resources.</string>
+                  <string>Security Level for Zerocoin (zOneWorld) Transactions. More is better, but needs more time and resources.</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::Box</enum>
@@ -895,7 +895,7 @@ zOWO are mature when they have more than 20 confirmations AND more than 1 mints 
                   </font>
                  </property>
                  <property name="toolTip">
-                  <string>Information about the available zOWO funds.</string>
+                  <string>Information about the available zOneWorld funds.</string>
                  </property>
                  <property name="text">
                   <string>zOWO Stats:</string>
@@ -1576,7 +1576,7 @@ Immature: confirmed, but less than 1 mints of the same denomination after it was
          <enum>Qt::ActionsContextMenu</enum>
         </property>
         <property name="text">
-         <string notr="true">0.000 000 00 ONEWORLD</string>
+         <string notr="true">0.000 000 00 OWO</string>
         </property>
         <property name="textInteractionFlags">
          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -1650,7 +1650,7 @@ Immature: confirmed, but less than 1 mints of the same denomination after it was
            <enum>Qt::ActionsContextMenu</enum>
           </property>
           <property name="text">
-           <string notr="true">0.00 ONEWORLD</string>
+           <string notr="true">0.00 OWO</string>
           </property>
           <property name="textInteractionFlags">
            <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -1847,7 +1847,7 @@ Immature: confirmed, but less than 1 mints of the same denomination after it was
          <enum>Qt::ActionsContextMenu</enum>
         </property>
         <property name="text">
-         <string notr="true">0.000 000 00 ONEWORLD</string>
+         <string notr="true">0.000 000 00 OWO</string>
         </property>
         <property name="textInteractionFlags">
          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>

@@ -1,7 +1,7 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2017 The OneWorld developers
+// Copyright (c) 2018 The OneWorld developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -20,6 +20,12 @@ OpenURIDialog::OpenURIDialog(QWidget* parent) : QDialog(parent),
 #if QT_VERSION >= 0x040700
     ui->uriEdit->setPlaceholderText("oneworld:");
 #endif
+
+    QPushButton * okButton = ui->buttonBox->button(QDialogButtonBox::Ok);
+    okButton->setIcon(QIcon());
+
+    QPushButton * cancelButton = ui->buttonBox->button(QDialogButtonBox::Cancel);
+    cancelButton->setIcon(QIcon());
 }
 
 OpenURIDialog::~OpenURIDialog()
